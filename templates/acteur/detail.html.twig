@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+	<h1>{{acteur.nom}}
+		{{acteur.prenom}}</h1>
+	<a href="{{path('acteur_list')}}">Retour</a>
+{% endblock %}
+
+{% block js %}
+	{{parent()}}
+	<script>
+		console.console.log('test');
+	</script>
+{% endblock %}
