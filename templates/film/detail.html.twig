@@ -1,0 +1,27 @@
+{% extends "base.html.twig" %}
+
+{% block title %}titre du flim
+{% endblock %}
+
+{% block body %}
+
+	<h1>{{film.title}}</h1>
+	<ul>
+		<li>durée:
+			{{film.duree}}</li>
+		<li>
+			<ul>
+				{% for role in film.roles %}
+					<li>
+						<p>{{role.name}}</p>
+						<p>{{role.acteur.prenom}}
+							{{role.acteur.nom}}</p>
+					</li>
+				{% endfor %}
+			</ul>
+		</li>
+
+	</ul>
+
+
+{% endblock %}

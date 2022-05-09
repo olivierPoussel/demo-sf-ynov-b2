@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ActeurRepository;
+use App\Repository\FilmRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ActeurRepository::class)]
-class Acteur
+#[ORM\Entity(repositoryClass: FilmRepository::class)]
+class Film
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -16,12 +16,12 @@ class Acteur
     private $id;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $nom;
+    private $title;
 
-    #[ORM\Column(type: 'string', length: 255, nullable: true)]
-    private $prenom;
+    #[ORM\Column(type: 'integer')]
+    private $duree;
 
-    #[ORM\OneToMany(mappedBy: 'acteur', targetEntity: Role::class)]
+    #[ORM\OneToMany(mappedBy: 'film', targetEntity: Role::class)]
     private $roles;
 
     public function __construct()
@@ -34,26 +34,26 @@ class Acteur
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getTitle(): ?string
     {
-        return $this->nom;
+        return $this->title;
     }
 
-    public function setNom(string $nom): self
+    public function setTitle(string $title): self
     {
-        $this->nom = $nom;
+        $this->title = $title;
 
         return $this;
     }
 
-    public function getPrenom(): ?string
+    public function getDuree(): ?int
     {
-        return $this->prenom;
+        return $this->duree;
     }
 
-    public function setPrenom(?string $prenom): self
+    public function setDuree(int $duree): self
     {
-        $this->prenom = $prenom;
+        $this->duree = $duree;
 
         return $this;
     }
@@ -70,7 +70,7 @@ class Acteur
     {
         if (!$this->roles->contains($role)) {
             $this->roles[] = $role;
-            $role->setActeur($this);
+            $role->setFilm($this);
         }
 
         return $this;
@@ -80,8 +80,8 @@ class Acteur
     {
         if ($this->roles->removeElement($role)) {
             // set the owning side to null (unless already changed)
-            if ($role->getActeur() === $this) {
-                $role->setActeur(null);
+            if ($role->getFilm() === $this) {
+                $role->setFilm(null);
             }
         }
 
