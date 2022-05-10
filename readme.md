@@ -32,3 +32,7 @@ après la création d'une entity ne pas oublier de créer et executer la migrati
 php bin/console make:migration
 php bin/console doctrine:migration:migrate
 ```
+
+### Créer un user + sécurité
+
+[voir la doc](https://symfony.com/doc/current/security.html)

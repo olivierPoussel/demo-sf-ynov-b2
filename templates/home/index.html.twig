@@ -13,3 +13,10 @@
 		{% endfor %}
 	</ul>
 {% endblock %}
+
+{% block javascripts %}
+	{{parent()}}
+	<script>
+		console.log('test');
+	</script>
+{% endblock %}

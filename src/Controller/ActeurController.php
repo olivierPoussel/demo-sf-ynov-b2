@@ -6,6 +6,7 @@ use App\Entity\Acteur;
 use App\Form\ActeurType;
 use App\Repository\ActeurRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,6 +26,7 @@ class ActeurController extends AbstractController
     }
 
     #[Route('/create', 'acteur_create')]
+    #[IsGranted('ROLE_ADMIN')]
     public function createActeur(Request $request, ManagerRegistry $doctrine)
     {
         //afficher le form
