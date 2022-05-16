@@ -1,0 +1,13 @@
+{{ form_start(form) }}
+{{ form_widget(form) }}
+<button type="button" class="add_item_link" data-collection-holder-class="realisateur_films">Add Film</button>
+<ul>
+	{% for film in form.films %}
+		<li>
+			{{ form_errors(film) }}
+			{{ form_widget(film) }}
+		</li>
+	{% endfor %}
+</ul>
+<button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

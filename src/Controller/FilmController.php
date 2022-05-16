@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Film;
+use App\Form\FilmType;
 use App\Repository\FilmRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,6 +18,17 @@ class FilmController extends AbstractController
 
         return $this->render('home/index.html.twig', [
             'films' => $films,
+        ]);
+    }
+
+    #[Route('/film/new', name: 'film_new')]
+    public function filmNew()
+    {
+        $film = new Film();
+        $form = $this->createForm(FilmType::class, $film);
+
+        return $this->render('film/new.html.twig', [
+            'form' => $form->createView(),
         ]);
     }
 

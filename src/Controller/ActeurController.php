@@ -52,9 +52,9 @@ class ActeurController extends AbstractController
     }
 
     #[Route('/{id}', name: 'acteur_detail')]
-    public function acteurDetail($id, ActeurRepository $acteurRepository)
+    public function acteurDetail(Acteur $acteur, ActeurRepository $acteurRepository)
     {
-        $acteur = $acteurRepository->find($id);
+        // $acteur = $acteurRepository->find($id);
 
         return $this->render('/acteur/detail.html.twig', [
             "acteur" => $acteur

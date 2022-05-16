@@ -36,3 +36,13 @@ php bin/console doctrine:migration:migrate
 ### Créer un user + sécurité
 
 [voir la doc](https://symfony.com/doc/current/security.html)
+
+### formulaire collection type
+
+[Doc](https://symfony.com/doc/current/reference/forms/types/collection.html#basic-usage)
+
+[Ajouter des champs dynamiquement](https://symfony.com/doc/current/form/form_collections.html#form-collections-new-prototype)
+
+### Création de fausse données avec Faker
+
+[Faker](https://fakerphp.github.io/)

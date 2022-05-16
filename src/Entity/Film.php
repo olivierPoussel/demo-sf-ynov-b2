@@ -24,6 +24,10 @@ class Film
     #[ORM\OneToMany(mappedBy: 'film', targetEntity: Role::class)]
     private $roles;
 
+    #[ORM\ManyToOne(targetEntity: Realisateur::class, inversedBy: 'films')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $realisateur;
+
     public function __construct()
     {
         $this->roles = new ArrayCollection();
@@ -84,6 +88,18 @@ class Film
                 $role->setFilm(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getRealisateur(): ?Realisateur
+    {
+        return $this->realisateur;
+    }
+
+    public function setRealisateur(?Realisateur $realisateur): self
+    {
+        $this->realisateur = $realisateur;
 
         return $this;
     }
